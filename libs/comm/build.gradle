@@ -1,0 +1,8 @@
+// 引入配置
+apply from: "${rootDir}/config.gradle"
+
+dependencies {
+    api 'com.github.wenkency:quickalert:1.7.0'
+}
+
+

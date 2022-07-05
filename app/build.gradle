@@ -2,6 +2,6 @@
 apply from: "${rootDir}/config.gradle"
 
 dependencies {
-    implementation project(path: ':mod-login')
-    implementation project(path: ':mod-register')
+    implementation project(path: ':mods:mod-login')
+    implementation project(path: ':mods:mod-register')
 }

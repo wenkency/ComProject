@@ -16,6 +16,7 @@ dependencyResolutionManagement {
 }
 rootProject.name = "ComProject"
 include ':app'
-include ':lib-comm'
-include ':mod-login'
-include ':mod-register'
+include ':libs:comm'
+include ':libs:net'
+include ':mods:mod-login'
+include ':mods:mod-register'

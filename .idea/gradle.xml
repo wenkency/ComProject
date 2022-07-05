@@ -11,9 +11,12 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/lib-comm" />
-            <option value="$PROJECT_DIR$/mod-login" />
-            <option value="$PROJECT_DIR$/mod-register" />
+            <option value="$PROJECT_DIR$/libs" />
+            <option value="$PROJECT_DIR$/libs/comm" />
+            <option value="$PROJECT_DIR$/libs/net" />
+            <option value="$PROJECT_DIR$/mods" />
+            <option value="$PROJECT_DIR$/mods/mod-login" />
+            <option value="$PROJECT_DIR$/mods/mod-register" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

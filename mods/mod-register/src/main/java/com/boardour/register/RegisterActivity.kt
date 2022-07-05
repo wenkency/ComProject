@@ -18,7 +18,16 @@ class RegisterActivity : BindActivity<RegisterViewModel, ActivityRegisterBinding
     }
 
     override fun onBind(binding: ActivityRegisterBinding, viewModel: RegisterViewModel) {
+        // UI相关
+        binding.vm = viewModel
+        // 点击事件
+        binding.click = Click()
+    }
 
+    inner class Click {
+        fun requestData() {
+            viewModel.requestData(dialogState)
+        }
     }
 
 }
