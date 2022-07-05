@@ -1,0 +1,7 @@
+// 引入配置
+apply from: "${rootDir}/config.gradle"
+
+dependencies {
+    implementation project(path: ':mod-login')
+    implementation project(path: ':mod-register')
+}

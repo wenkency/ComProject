@@ -1,0 +1,3 @@
+// 引入配置
+apply from: "${rootDir}/config.gradle"
+

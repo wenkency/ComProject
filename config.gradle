@@ -1,0 +1,107 @@
+project.ext {
+    // 是不是app
+    def isApp = project.name == 'app'
+    def isComm = project.name == 'lib-comm'
+
+
+    setAppConfig = {
+        if (isApp) {
+            apply plugin: 'com.android.application'
+        } else {
+            apply plugin: 'com.android.library'
+        }
+        apply plugin: 'org.jetbrains.kotlin.android'
+        // ARouter
+        apply plugin: 'com.alibaba.arouter'
+        apply plugin: 'kotlin-kapt'
+
+        // 2. android配置
+        setAndroidConfig(project.android)
+        // 3. 设置依赖
+        setDependencies(project.dependencies)
+    }
+    // 2. 设置公共配置
+    setAndroidConfig = {
+        android ->
+            android.compileSdk 32
+
+            android.defaultConfig {
+                minSdk 21
+                targetSdk 32
+                versionCode 1
+                versionName "1.0"
+                if (isApp) {
+                    applicationId "com.boardour.comproject"
+                }
+                // 阿里ARouter
+                javaCompileOptions {
+                    annotationProcessorOptions {
+                        arguments = [AROUTER_MODULE_NAME: project.getName()]
+                    }
+                }
+            }
+
+            android.buildTypes {
+                release {
+                    minifyEnabled false
+                    proguardFiles android.getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                }
+                debug {
+                    minifyEnabled false
+                    proguardFiles android.getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+                }
+            }
+
+           /* android.compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
+
+            android.kotlinOptions {
+                jvmTarget = '1.8'
+            }*/
+
+            // 这个是使用dataBinding
+            if (!isComm){
+                android.buildFeatures {
+                    dataBinding true
+                }
+            }
+
+
+    }
+
+    // 3. 设置依赖
+    setDependencies = {
+        dependencies ->
+            // 设置依赖代理
+            delegate = dependencies
+
+            implementation 'androidx.core:core-ktx:1.7.0'
+            implementation 'androidx.appcompat:appcompat:1.4.2'
+            implementation 'com.google.android.material:material:1.5.0'
+            implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+            // ARouter
+            implementation 'com.alibaba:arouter-api:1.5.2'
+            kapt 'com.alibaba:arouter-compiler:1.5.2'
+            // MVVM基本库
+            implementation 'com.github.wenkency:base-mvvm:1.9.2'
+            // implementation 'androidx.activity:activity:1.4.0'
+
+            // lifecycle扩展库：ViewModel + LiveData
+            def lifecycle_version = "2.4.1"
+            implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+            implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+            // 通用标题栏：https://github.com/wenkency/titlebar
+            implementation 'com.github.wenkency:titlebar:2.0.7'
+            // 通用加载页面布局：https://github.com/wenkency/loading
+            implementation 'com.github.wenkency:loading:1.5.0'
+            if (!isComm) {
+                implementation project(path: ':lib-comm')
+            }
+
+    }
+
+}
+
+project.setAppConfig()
