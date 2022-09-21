@@ -6,6 +6,8 @@ package com.boardour.comm
 object RouterPath {
     // 登录页面
     const val LOGIN = "/login/login/activity"
+    const val LOGIN_PROVIDER = "/login/login/provider"
+
     // 注册
     const val REGISTER = "/register/register/activity"
 }

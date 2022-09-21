@@ -2,7 +2,7 @@ project.ext {
     // 是不是app
     def isApp = project.name == 'app'
     def isComm = project.name == 'comm'
-    def isMode = project.name.startsWith("mod")
+    def isMode = projectDir.getAbsolutePath().contains("mods")
 
 
     setAppConfig = {
@@ -15,6 +15,14 @@ project.ext {
         // ARouter
         apply plugin: 'com.alibaba.arouter'
         apply plugin: 'kotlin-kapt'
+        apply plugin: 'kotlin-android-extensions'
+
+
+        project.kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
 
         // 2. android配置
         setAndroidConfig(project.android)
@@ -53,23 +61,21 @@ project.ext {
                 }
             }
 
-            /* android.compileOptions {
+             android.compileOptions {
                  sourceCompatibility JavaVersion.VERSION_1_8
                  targetCompatibility JavaVersion.VERSION_1_8
              }
 
              android.kotlinOptions {
                  jvmTarget = '1.8'
-             }*/
+             }
 
             // 这个是使用dataBinding
-            if (isMode||isApp) {
+            if (isMode || isApp) {
                 android.buildFeatures {
                     dataBinding true
                 }
             }
-
-
     }
 
     // 3. 设置依赖

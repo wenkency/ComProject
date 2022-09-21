@@ -18,5 +18,5 @@ rootProject.name = "ComProject"
 include ':app'
 include ':libs:comm'
 include ':libs:net'
-include ':mods:mod-login'
-include ':mods:mod-register'
+include ':mods:login'
+include ':mods:register'

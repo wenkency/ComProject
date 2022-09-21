@@ -15,11 +15,10 @@
             <option value="$PROJECT_DIR$/libs/comm" />
             <option value="$PROJECT_DIR$/libs/net" />
             <option value="$PROJECT_DIR$/mods" />
-            <option value="$PROJECT_DIR$/mods/mod-login" />
-            <option value="$PROJECT_DIR$/mods/mod-register" />
+            <option value="$PROJECT_DIR$/mods/login" />
+            <option value="$PROJECT_DIR$/mods/register" />
           </set>
         </option>
-        <option name="resolveModulePerSourceSet" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
