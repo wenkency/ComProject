@@ -18,7 +18,7 @@ class MainActivity : AppActivity() {
 
 
     fun toLogin(view: View) {
-        RouterHelper.toLogin(this@MainActivity)
+        RouterHelper.toRegister(this@MainActivity)
     }
 
     override fun isFinishActivityAnim(): Boolean {

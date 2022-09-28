@@ -7,10 +7,11 @@
     tools:context=".LoginActivity">
 
     <TextView
+        android:padding="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="toRegister"
-        android:text="跳转到注册"
+        android:text="点击打印带过来的数据"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

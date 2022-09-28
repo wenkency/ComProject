@@ -2,12 +2,12 @@ package com.boardour.login
 
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import cn.carhouse.titlebar.DefTitleBar
 import com.alibaba.android.arouter.facade.annotation.Autowired
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.base.AppActivity
-import com.boardour.comm.RouterHelper
 import com.boardour.comm.RouterPath
 
 /**
@@ -31,6 +31,10 @@ class LoginActivity : AppActivity() {
     }
 
     fun toRegister(view: View) {
-        RouterHelper.toRegister(this)
+        Toast.makeText(
+            this,
+            "$userName",
+            Toast.LENGTH_LONG
+        ).show()
     }
 }
