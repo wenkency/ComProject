@@ -15,10 +15,13 @@ object RouterHelper {
     fun toLogin(activity: Activity) {
         ARouter.getInstance()
             .build(RouterPath.LOGIN)
-            .withString("userName", LoginProvider.getInstance().loginProvider?.userName())
+            .withString("userName", LoginProvider.loginProvider?.userName())
             .navigation(activity)
     }
 
+    /**
+     * 跳转到注册页面
+     */
     fun toRegister(activity: Activity) {
         ARouter.getInstance()
             .build(RouterPath.REGISTER)
