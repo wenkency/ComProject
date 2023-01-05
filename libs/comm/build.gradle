@@ -1,8 +1,22 @@
 // 引入配置
 apply from: "${rootDir}/config.gradle"
-
+android {
+    namespace 'com.boardout.comm'
+}
 dependencies {
     api 'com.github.wenkency:quickalert:1.7.0'
+    api 'com.github.wenkency:views:2.9.8'
+    api 'com.github.wenkency:quickadapter:2.0.0'
+    // 基于Glide图片加载封装
+    api 'com.github.wenkency:imageloader:2.7.0'
+    // Glide图片加载库
+    api "com.github.bumptech.glide:glide:4.13.2"
+    kapt "com.github.bumptech.glide:compiler:4.13.2"
+
+    // 刷新控件
+    api  'io.github.scwang90:refresh-layout-kernel:2.0.5'      //核心必须依赖
+    api  'io.github.scwang90:refresh-header-classics:2.0.5'    //经典刷新头
+    api  'io.github.scwang90:refresh-footer-classics:2.0.5'    //经典加载
 }
 
 

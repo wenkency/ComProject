@@ -4,4 +4,10 @@ apply from: "${rootDir}/config.gradle"
 dependencies {
     implementation project(path: ':mods:login')
     implementation project(path: ':mods:register')
+    implementation project(path: ':mods:home')
+    implementation project(path: ':mods:navi')
+    implementation project(path: ':mods:project')
+    implementation project(path: ':mods:user')
+    implementation project(path: ':mods:web')
+
 }

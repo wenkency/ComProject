@@ -27,4 +27,16 @@ object RouterHelper {
             .build(RouterPath.REGISTER)
             .navigation(activity)
     }
+
+    /**
+     * 跳转到Web页面
+     */
+    fun toWeb(activity: Activity, url: String, title: String = "") {
+        ARouter.getInstance()
+            .build(RouterPath.WEB)
+            .withString("url", url)
+            .withString("title", title)
+            .navigation(activity)
+    }
+
 }

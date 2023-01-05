@@ -21,7 +21,9 @@ class RegisterViewModel : NetViewModel() {
     // 注册成功
     var registerSuccess = BaseMutableLiveData(false)
 
-
+    /**
+     * 请求网络数据
+     */
     fun requestData(dialogState: DialogStateViewModel) {
         // 模拟注册
         RetrofitPresenter.post(this, "post", object : DialogCallback<String>(dialogState) {

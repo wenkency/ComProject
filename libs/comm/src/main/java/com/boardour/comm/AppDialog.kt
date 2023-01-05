@@ -4,6 +4,7 @@ import android.app.Activity
 import cn.carhouse.alert.QuickBuilder
 import cn.carhouse.alert.QuickDialog
 import com.base.IDialog
+import com.boardout.comm.R
 
 /**
  * 公共的Dialog，网络加载调用

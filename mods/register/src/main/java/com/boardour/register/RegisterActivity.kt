@@ -6,7 +6,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.base.BindActivity
 import com.boardour.comm.RouterHelper
 import com.boardour.comm.RouterPath
-import com.boardour.register.databinding.ActivityRegisterBinding
+import com.boardout.register.R
+import com.boardout.register.databinding.ActivityRegisterBinding
 
 /**
  * 注册页面

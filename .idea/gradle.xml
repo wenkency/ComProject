@@ -15,8 +15,13 @@
             <option value="$PROJECT_DIR$/libs/comm" />
             <option value="$PROJECT_DIR$/libs/net" />
             <option value="$PROJECT_DIR$/mods" />
+            <option value="$PROJECT_DIR$/mods/home" />
             <option value="$PROJECT_DIR$/mods/login" />
+            <option value="$PROJECT_DIR$/mods/navi" />
+            <option value="$PROJECT_DIR$/mods/project" />
             <option value="$PROJECT_DIR$/mods/register" />
+            <option value="$PROJECT_DIR$/mods/user" />
+            <option value="$PROJECT_DIR$/mods/web" />
           </set>
         </option>
       </GradleProjectSettings>

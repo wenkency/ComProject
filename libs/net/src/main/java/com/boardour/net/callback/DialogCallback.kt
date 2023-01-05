@@ -10,7 +10,7 @@ import com.retrofit.core.RestClient
 abstract class DialogCallback<T>(
     private val dialogState: DialogStateViewModel,
     private val isDestroy: Boolean = false
-) : BeanCallback<T>() {
+) : NetCallback<T>() {
 
     override fun onBefore(client: RestClient) {
         dialogState.showDialog.value = true

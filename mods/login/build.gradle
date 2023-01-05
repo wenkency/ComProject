@@ -1,3 +1,6 @@
 // 引入配置
 apply from: "${rootDir}/config.gradle"
 
+android {
+    namespace 'com.boardout.login'
+}

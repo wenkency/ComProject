@@ -1,6 +1,10 @@
 // 引入配置
 apply from: "${rootDir}/config.gradle"
 
+android {
+    namespace 'com.boardout.net'
+}
+
 dependencies {
     // 依赖
     api 'com.github.wenkency:kotlin-retrofit:3.1.8'

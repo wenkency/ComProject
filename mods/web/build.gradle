@@ -1,0 +1,12 @@
+// 引入配置
+apply from: "${rootDir}/config.gradle"
+
+android {
+    namespace 'com.boardout.web'
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    api files('libs/tbs_sdk_20230104_145521.jar')
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+}

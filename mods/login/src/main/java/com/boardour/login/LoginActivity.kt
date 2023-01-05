@@ -9,6 +9,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.alibaba.android.arouter.launcher.ARouter
 import com.base.AppActivity
 import com.boardour.comm.RouterPath
+import com.boardout.login.R
 
 /**
  * 登录页面

@@ -1,0 +1,4 @@
+apply from: "${rootDir}/config.gradle"
+android {
+    namespace 'com.boardout.home'
+}

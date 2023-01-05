@@ -1,7 +1,6 @@
 package com.boardour.net.callback
 
 import com.base.viewmodel.PageStateViewModel
-import com.retrofit.callback.BeanCallback
 import com.retrofit.core.RestClient
 
 /**
@@ -10,7 +9,7 @@ import com.retrofit.core.RestClient
 abstract class PageCallback<T>(
     private val pageState: PageStateViewModel,
     private val isShowContent: Boolean = true
-) : BeanCallback<T>() {
+) : NetCallback<T>() {
 
     override fun onBefore(client: RestClient) {
         pageState.showLoadingContent.value = isShowContent

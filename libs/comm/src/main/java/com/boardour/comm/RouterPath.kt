@@ -10,4 +10,8 @@ object RouterPath {
 
     // 注册
     const val REGISTER = "/register/register/activity"
+
+    // web
+    const val WEB = "/web/web/activity"
+    const val WEB_DATA = "WebData"
 }
