@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<cn.carhouse.views.banner.BannerView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/banner_view"
     android:layout_width="match_parent"
-    android:layout_height="0dp"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:point_bottom_distance="6dp"
-    app:point_distance="5dp"
-    app:point_gravity="center"
-    app:point_height="2dp"
-    app:point_radius="1dp"
-    app:point_width="12dp"
-    app:radio_width="1.8"
-    app:point_color_selected="#ff8635"
-    app:point_color_unselected="#77ff8635"
-    tools:ignore="MissingDefaultResource" />
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="6dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="2dp">
+
+    <cn.carhouse.views.banner.BannerView
+        android:id="@+id/banner_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:point_bottom_distance="6dp"
+        app:point_color_selected="#ff8635"
+        app:point_color_unselected="#77ff8635"
+        app:point_distance="5dp"
+        app:point_gravity="center"
+        app:point_height="2dp"
+        app:point_radius="1dp"
+        app:point_width="12dp"
+        app:radio_width="1.8" />
+</androidx.cardview.widget.CardView>

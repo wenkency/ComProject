@@ -79,6 +79,9 @@ class HomeAdapter(activity: Activity) :
                         view.width,
                         view.height
                     )
+                    holder.setOnClickListener {
+                        RouterHelper.toWeb(appActivity, bean.url)
+                    }
                 }
             }
         bannerView?.adapter = adapter
@@ -86,7 +89,14 @@ class HomeAdapter(activity: Activity) :
 
     // 设置文章数据
     private fun setArticleData(holder: XQuickViewHolder, item: ArticleBean) {
-        holder.setText(R.id.tv_author, item.author)
+        holder.setText(
+            R.id.tv_author,
+            if (item.author.isNullOrEmpty()) {
+                item.shareUser
+            } else {
+                item.author
+            }
+        )
         holder.setText(R.id.tv_title, item.title)
         holder.setText(R.id.tv_chapterName, "${item.superChapterName}/${item.chapterName}")
         holder.setText(R.id.tv_niceDate, item.niceDate)

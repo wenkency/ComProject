@@ -16,7 +16,7 @@ abstract class PageCallback<T>(
         pageState.showLoading.value = true
     }
 
-    override fun onSucceed(data: T, client: RestClient) {
+    final override fun onSucceed(data: T, client: RestClient) {
         pageState.showContent.value = true
         onLoadSucceed(data)
     }

@@ -16,7 +16,7 @@ abstract class DialogCallback<T>(
         dialogState.showDialog.value = true
     }
 
-    override fun onSucceed(data: T, client: RestClient) {
+    final override fun onSucceed(data: T, client: RestClient) {
         dismiss()
         onLoadSucceed(data)
     }

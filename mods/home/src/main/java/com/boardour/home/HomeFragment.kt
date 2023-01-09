@@ -19,6 +19,12 @@ class HomeFragment : BindFragment<HomeViewModel, HomeFragmentBinding>() {
     private lateinit var homeAdapter: HomeAdapter
     private var pageNum = 0
     private var pageCount = 0
+
+    // 不需要加载页面
+    override fun isNeedLoading(): Boolean {
+        return false
+    }
+
     override fun getLayoutId(): Int {
         return R.layout.home_fragment
     }
@@ -82,6 +88,7 @@ class HomeFragment : BindFragment<HomeViewModel, HomeFragmentBinding>() {
     override fun initNet() {
         // 调用下拉刷新
         binding.smartRefresh.autoRefresh()
+        //viewModel.requestBanner()
     }
 
     // 控制滚动

@@ -4,7 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.util.Log;
+import android.view.KeyEvent;
 
+import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.smtt.sdk.WebViewClient;
 
@@ -19,22 +22,26 @@ public class WebViewClientImpl extends WebViewClient {
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView webView, String url) {
+        Log.e("TAG", "shouldOverrideUrlLoading " + url);
         if (webView != null && url != null) {
             Context context = webView.getContext();
             if (url.endsWith(".apk")) {
                 Uri apkUri = Uri.parse(url);
                 Intent intent = new Intent(Intent.ACTION_VIEW, apkUri);
                 context.startActivity(intent);
+                return true;
             } else if (url.startsWith("http")) {
                 webView.loadUrl(url);
+                return true;
             } else {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 if (isInstall(context, intent)) {
                     context.startActivity(intent);
                 }
+                return true;
             }
         }
-        return true;
+        return super.shouldOverrideUrlLoading(webView, url);
     }
 
     @Override
