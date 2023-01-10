@@ -20,10 +20,7 @@ class HomeFragment : BindFragment<HomeViewModel, HomeFragmentBinding>() {
     private var pageNum = 0
     private var pageCount = 0
 
-    // 不需要加载页面
-    override fun isNeedLoading(): Boolean {
-        return false
-    }
+
 
     override fun getLayoutId(): Int {
         return R.layout.home_fragment
@@ -75,7 +72,7 @@ class HomeFragment : BindFragment<HomeViewModel, HomeFragmentBinding>() {
                 pageNum = 0
                 pageCount = 0
                 // 请求Banner数据后 -- 请求列表数据
-                viewModel.requestBanner()
+                viewModel.requestBanner(pageState)
             }
 
             override fun onLoadMore(refreshLayout: RefreshLayout) {

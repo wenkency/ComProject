@@ -5,6 +5,7 @@ import cn.carhouse.web.WebUtils
 import com.alibaba.android.arouter.launcher.ARouter
 import com.base.BaseConfig
 import com.boardour.comm.AppDialog
+import com.lven.loading.LoadingManager
 import com.retrofit.config.RestConfig
 import com.scwang.smart.refresh.footer.ClassicsFooter
 import com.scwang.smart.refresh.header.ClassicsHeader
@@ -48,6 +49,11 @@ class AppApplication : Application() {
             // 3. Web初始化
             WebUtils.getInstance().init(this)
         }
+
+        // 配置加载页面，实际用自己UI设置的页面：https://github.com/wenkency/loading
+        LoadingManager.BASE_LOADING_LAYOUT_ID = R.layout.loading_pager_loading
+        LoadingManager.BASE_RETRY_LAYOUT_ID = R.layout.loading_pager_error
+        LoadingManager.BASE_DATA_ERROR_LAYOUT_ID = R.layout.loading_pager_data_error
     }
 
 

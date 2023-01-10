@@ -3,7 +3,6 @@ package com.boardour.comproject
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 import cn.carhouse.adapter.XFragmentPagerAdapter
-import cn.carhouse.adapter.XFragmentStatePagerAdapter
 import cn.carhouse.titlebar.DefTitleBar
 import cn.carhouse.titlebar.utils.TitleBarUtil
 import cn.carhouse.views.tab.XTabLayout
@@ -27,7 +26,7 @@ class MainActivity : AppActivity() {
     override fun getLayoutId(): Int = R.layout.activity_main
 
     override fun initTitle(titleBar: DefTitleBar) {
-        titleBar.setTitle("首页")
+        titleBar.setTitle("玩Android")
         // 隐藏返回按钮
         titleBar.clearBackImage()
     }
@@ -35,6 +34,8 @@ class MainActivity : AppActivity() {
 
     // 初始化数据
     override fun initData() {
+        // 设置透明
+        TitleBarUtil.statusBarTrans(this)
         // 底部Tab数据
         tabData.add(MainTabBean("首页", R.drawable.home, R.drawable.home_selector))
         tabData.add(MainTabBean("导航", R.drawable.article, R.drawable.article_selector))
@@ -45,8 +46,7 @@ class MainActivity : AppActivity() {
         fragments.add(NaviFragment())
         fragments.add(ProjectFragment())
         fragments.add(UserFragment())
-        // 设置透明
-        TitleBarUtil.statusBarTrans(this)
+
     }
 
 
@@ -62,6 +62,10 @@ class MainActivity : AppActivity() {
 
         viewPager.addOnPageChangeListener(object : ViewPager.SimpleOnPageChangeListener() {
             override fun onPageSelected(position: Int) {
+                if (position == 0) {
+                    titleBar?.setTitle("玩Android")
+                    return
+                }
                 titleBar?.setTitle(tabData[position].name)
             }
         })

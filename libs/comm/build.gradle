@@ -5,7 +5,7 @@ android {
 }
 dependencies {
     api 'com.github.wenkency:quickalert:1.7.0'
-    api 'com.github.wenkency:views:2.9.8'
+    api 'com.github.wenkency:views:3.0.2'
     api 'com.github.wenkency:quickadapter:2.0.0'
     // 基于Glide图片加载封装
     api 'com.github.wenkency:imageloader:2.7.0'

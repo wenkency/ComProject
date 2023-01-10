@@ -2,10 +2,12 @@ package com.boardour.home
 
 import androidx.lifecycle.MutableLiveData
 import com.base.viewmodel.DialogStateViewModel
+import com.base.viewmodel.PageStateViewModel
 import com.boardour.home.bean.ArticleListBean
 import com.boardour.home.bean.BannerItem
 import com.boardour.net.callback.DialogCallback
 import com.boardour.net.callback.NetCallback
+import com.boardour.net.callback.PageCallback
 import com.boardour.net.viewmodel.NetViewModel
 import com.retrofit.RetrofitPresenter
 import com.retrofit.core.RestClient
@@ -23,13 +25,13 @@ class HomeViewModel : NetViewModel() {
     /**
      * 请求网络数据
      */
-    fun requestBanner() {
+    fun requestBanner(pageState: PageStateViewModel) {
         // 模拟注册
         RetrofitPresenter.get(
             this,
             "/banner/json",
-            object : NetCallback<List<BannerItem>>() {
-                override fun onSucceed(data: List<BannerItem>, client: RestClient) {
+            object : PageCallback<List<BannerItem>>(pageState) {
+                override fun onLoadSucceed(data: List<BannerItem>) {
                     bannerData.value = data
                 }
 

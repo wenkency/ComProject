@@ -1,6 +1,7 @@
 package com.boardour.home
 
 import android.app.Activity
+import android.text.Html
 import android.view.View
 import cn.carhouse.adapter.XQuickAdapter
 import cn.carhouse.adapter.XQuickSupport
@@ -97,7 +98,7 @@ class HomeAdapter(activity: Activity) :
                 item.author
             }
         )
-        holder.setText(R.id.tv_title, item.title)
+        holder.setText(R.id.tv_title, Html.fromHtml(item.title))
         holder.setText(R.id.tv_chapterName, "${item.superChapterName}/${item.chapterName}")
         holder.setText(R.id.tv_niceDate, item.niceDate)
         // 点击事件
