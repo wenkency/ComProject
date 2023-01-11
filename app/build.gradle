@@ -9,5 +9,6 @@ dependencies {
     implementation project(path: ':mods:project')
     implementation project(path: ':mods:user')
     implementation project(path: ':mods:web')
+    implementation project(path: ':libs:mmkv')
 
 }

@@ -71,10 +71,8 @@ project.ext {
              }
 
             // 这个是使用dataBinding
-            if (isMode || isApp) {
-                android.buildFeatures {
-                    dataBinding true
-                }
+            android.buildFeatures {
+                dataBinding true
             }
     }
 

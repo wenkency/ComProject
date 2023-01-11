@@ -4,7 +4,10 @@ import android.app.Application
 import cn.carhouse.web.WebUtils
 import com.alibaba.android.arouter.launcher.ARouter
 import com.base.BaseConfig
+import com.base.BuildConfig
 import com.boardour.comm.AppDialog
+import com.boardour.mmkv.MMKVUtils
+import com.boardour.net.cookie.NetCookieJar
 import com.lven.loading.LoadingManager
 import com.retrofit.config.RestConfig
 import com.scwang.smart.refresh.footer.ClassicsFooter
@@ -31,6 +34,28 @@ class AppApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
+        // 这个是缓存类
+        com.boardour.mmkv.MMKVUtils.init(this)
+
+        //  项目通用Dialog配置
+        BaseConfig.dialog = AppDialog()
+        // 网络初始化 http://httpbin.org/
+        RestConfig.baseUrl("https://www.wanandroid.com/")
+            .debugUrl("https://www.wanandroid.com/")
+            .register(this)
+        RestConfig.cookieJar = NetCookieJar
+
+
+        // 加载页面：https://github.com/wenkency/loading
+        LoadingManager.BASE_LOADING_LAYOUT_ID = R.layout.loading_pager_loading
+        LoadingManager.BASE_RETRY_LAYOUT_ID = R.layout.loading_pager_error
+        LoadingManager.BASE_DATA_ERROR_LAYOUT_ID = R.layout.loading_pager_data_error
+
+
+        thread {
+            // 3. Web初始化
+            WebUtils.getInstance().init(this)
+        }
         thread {
             if (BuildConfig.DEBUG) {
                 ARouter.openLog()     // 打印日志
@@ -38,22 +63,6 @@ class AppApplication : Application() {
             }
             ARouter.init(this) // 尽可能早，推荐在Application中初始化
         }
-
-        // 1. 项目通用Dialog配置
-        BaseConfig.dialog = AppDialog()
-        // 2. 网络初始化 http://httpbin.org/
-        RestConfig.baseUrl("https://www.wanandroid.com/")
-            .debugUrl("https://www.wanandroid.com/")
-            .register(this)
-        thread {
-            // 3. Web初始化
-            WebUtils.getInstance().init(this)
-        }
-
-        // 配置加载页面，实际用自己UI设置的页面：https://github.com/wenkency/loading
-        LoadingManager.BASE_LOADING_LAYOUT_ID = R.layout.loading_pager_loading
-        LoadingManager.BASE_RETRY_LAYOUT_ID = R.layout.loading_pager_error
-        LoadingManager.BASE_DATA_ERROR_LAYOUT_ID = R.layout.loading_pager_data_error
     }
 
 

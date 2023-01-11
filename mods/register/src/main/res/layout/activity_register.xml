@@ -20,14 +20,15 @@
         android:padding="15dp"
         tools:context=".RegisterActivity">
 
-        <EditText
+
+        <cn.carhouse.views.XEditLayout
             android:id="@+id/et_name"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:hint="请输入用户名"
-            android:text="@={vm.name}"
-            android:textColor="@android:color/black"
+            android:layout_height="50dp"
+            android:padding="5dp"
+            app:editText="@={vm.name}"
+            app:edit_hint="请输入帐号"
+            app:edit_line_visible="true"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,10 +43,10 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/et_name" />
 
-        <TextView
-            android:layout_width="wrap_content"
+        <Button
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{()->click.requestData()}"
+            android:onClick="@{()->click.register()}"
             android:padding="15dp"
             android:text="@{vm.result}"
             app:layout_constraintBottom_toBottomOf="parent"

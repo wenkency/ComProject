@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/libs" />
             <option value="$PROJECT_DIR$/libs/comm" />
+            <option value="$PROJECT_DIR$/libs/mmkv" />
             <option value="$PROJECT_DIR$/libs/net" />
             <option value="$PROJECT_DIR$/mods" />
             <option value="$PROJECT_DIR$/mods/home" />

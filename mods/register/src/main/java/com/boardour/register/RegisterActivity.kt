@@ -4,7 +4,6 @@ import android.widget.Toast
 import cn.carhouse.titlebar.DefTitleBar
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.base.BindActivity
-import com.boardour.comm.RouterHelper
 import com.boardour.comm.RouterPath
 import com.boardout.register.R
 import com.boardout.register.databinding.ActivityRegisterBinding
@@ -29,20 +28,26 @@ class RegisterActivity : BindActivity<RegisterViewModel, ActivityRegisterBinding
         // 注册成功事件
         viewModel.registerSuccess.observe(this) {
             // 到登录页面
-            if (it) {
-                RouterHelper.toLogin(this)
+            if (it == true) {
+                finish()
             }
         }
     }
 
     inner class Click {
-        fun requestData() {
-            Toast.makeText(
-                this@RegisterActivity,
-                "${viewModel.name.value}:${viewModel.pwd.value}",
-                Toast.LENGTH_LONG
-            ).show()
-            viewModel.requestData(dialogState)
+        // 注册
+        fun register() {
+            val name = viewModel.name.value
+            val pass = viewModel.pwd.value
+            if (name.isNullOrEmpty()) {
+                Toast.makeText(this@RegisterActivity, "请输入帐号", Toast.LENGTH_SHORT).show()
+                return
+            }
+            if (pass.isNullOrEmpty()) {
+                Toast.makeText(this@RegisterActivity, "请输入密码", Toast.LENGTH_SHORT).show()
+                return
+            }
+            viewModel.requestData(this@RegisterActivity, name, pass)
         }
     }
 

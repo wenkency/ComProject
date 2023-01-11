@@ -4,3 +4,6 @@ apply from: "${rootDir}/config.gradle"
 android {
     namespace 'com.boardout.login'
 }
+dependencies {
+    implementation project(path: ':libs:mmkv')
+}
