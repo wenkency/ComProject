@@ -39,7 +39,7 @@ class ProjectFragment : BaseFragment() {
         })
         viewPager.adapter = pagerAdapter
         // 防止销毁，性能差点，但不影响
-        viewPager.offscreenPageLimit = Int.MAX_VALUE / 2
+        viewPager.offscreenPageLimit = 3
         // TAB设置
         tabAdapter = TabAdapter(getAppActivity())
         tabLayout.setAdapter(tabAdapter, viewPager, 0)

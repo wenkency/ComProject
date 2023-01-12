@@ -2,7 +2,9 @@ package com.boardour.user
 
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import cn.carhouse.views.XTextLayout
 import com.base.BaseFragment
 import com.base.utils.ViewModelUtils
@@ -25,6 +27,9 @@ class UserFragment : BaseFragment() {
         val tvLogin = findViewById<TextView>(R.id.tv_register)
         val btnUnLogin = findViewById<Button>(R.id.btn_unlogin)
         val tvCollect = findViewById<XTextLayout>(R.id.tv_collect)
+        val ivIcon = findViewById<ImageView>(R.id.iv_icon)
+        tvCollect.ivLeft.scaleType = ImageView.ScaleType.FIT_XY
+        tvCollect.ivRight.scaleType = ImageView.ScaleType.FIT_XY
 
         UserViewModel.user.observe(this) {
             if (it != null) {
@@ -43,12 +48,7 @@ class UserFragment : BaseFragment() {
             }
         }
 
-        tvLogin.setOnClickListener {
-            // 如果没有登录
-            if (UserViewModel.isLogin.value == false) {
-                RouterHelper.toLogin(getAppActivity())
-            }
-        }
+
 
         viewModel.unLogin.observe(this) {
             if (it) {
@@ -63,9 +63,28 @@ class UserFragment : BaseFragment() {
             // 到收藏页面
             collect()
         }
+
+        // 登录
+        tvLogin.setOnClickListener {
+            toLogin()
+        }
+        ivIcon.setOnClickListener {
+            toLogin()
+        }
     }
 
     private fun collect() {
+        if (UserViewModel.isLogin.value == false) {
+            Toast.makeText(getAppActivity(), "请先登录!", Toast.LENGTH_SHORT).show()
+            return
+        }
         RouterHelper.toCollect(getAppActivity())
+    }
+
+    private fun toLogin() {
+        // 如果没有登录
+        if (UserViewModel.isLogin.value == false) {
+            RouterHelper.toLogin(getAppActivity())
+        }
     }
 }
