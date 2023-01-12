@@ -11,18 +11,16 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/libs" />
-            <option value="$PROJECT_DIR$/libs/comm" />
-            <option value="$PROJECT_DIR$/libs/mmkv" />
-            <option value="$PROJECT_DIR$/libs/net" />
-            <option value="$PROJECT_DIR$/mods" />
-            <option value="$PROJECT_DIR$/mods/home" />
-            <option value="$PROJECT_DIR$/mods/login" />
-            <option value="$PROJECT_DIR$/mods/navi" />
-            <option value="$PROJECT_DIR$/mods/project" />
-            <option value="$PROJECT_DIR$/mods/register" />
-            <option value="$PROJECT_DIR$/mods/user" />
-            <option value="$PROJECT_DIR$/mods/web" />
+            <option value="$PROJECT_DIR$/home" />
+            <option value="$PROJECT_DIR$/lib-comm" />
+            <option value="$PROJECT_DIR$/lib-mmkv" />
+            <option value="$PROJECT_DIR$/lib-net" />
+            <option value="$PROJECT_DIR$/login" />
+            <option value="$PROJECT_DIR$/navi" />
+            <option value="$PROJECT_DIR$/project" />
+            <option value="$PROJECT_DIR$/register" />
+            <option value="$PROJECT_DIR$/user" />
+            <option value="$PROJECT_DIR$/web" />
           </set>
         </option>
       </GradleProjectSettings>

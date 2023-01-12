@@ -1,8 +1,9 @@
 project.ext {
     // 是不是app
     def isApp = project.name == 'app'
-    def isComm = project.name == 'comm'
-    def isMode = projectDir.getAbsolutePath().contains("mods")
+    def isComm = project.name == 'lib-comm'
+    def isMmkv = project.name == 'lib-mmkv'
+    def isNet = project.name == 'lib-net'
 
 
     setAppConfig = {
@@ -61,14 +62,14 @@ project.ext {
                 }
             }
 
-             android.compileOptions {
-                 sourceCompatibility JavaVersion.VERSION_1_8
-                 targetCompatibility JavaVersion.VERSION_1_8
-             }
+            android.compileOptions {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
 
-             android.kotlinOptions {
-                 jvmTarget = '1.8'
-             }
+            android.kotlinOptions {
+                jvmTarget = '1.8'
+            }
 
             // 这个是使用dataBinding
             android.buildFeatures {
@@ -101,9 +102,10 @@ project.ext {
             implementation 'com.github.wenkency:titlebar:2.1.0'
             // 通用加载页面布局：https://github.com/wenkency/loading
             implementation 'com.github.wenkency:loading:1.5.0'
-            if (isMode || isApp) {
-                implementation project(path: ':libs:comm')
-                implementation project(path: ':libs:net')
+
+            if (!isComm && !isMmkv && !isNet) {
+                implementation project(path: ':lib-comm')
+                implementation project(path: ':lib-net')
             }
 
     }

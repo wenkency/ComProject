@@ -35,7 +35,7 @@ class AppApplication : Application() {
         super.onCreate()
 
         // 这个是缓存类
-        com.boardour.mmkv.MMKVUtils.init(this)
+        MMKVUtils.init(this)
 
         //  项目通用Dialog配置
         BaseConfig.dialog = AppDialog()
