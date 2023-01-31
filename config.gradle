@@ -33,11 +33,11 @@ project.ext {
     // 2. 设置公共配置
     setAndroidConfig = {
         android ->
-            android.compileSdk 32
+            android.compileSdk 33
 
             android.defaultConfig {
                 minSdk 21
-                targetSdk 32
+                targetSdk 33
                 versionCode 1
                 versionName "1.0"
                 if (isApp) {
@@ -88,8 +88,8 @@ project.ext {
             implementation 'com.google.android.material:material:1.5.0'
             implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
             // ARouter
-            implementation 'com.alibaba:arouter-api:1.5.2'
-            kapt 'com.alibaba:arouter-compiler:1.5.2'
+            implementation 'com.github.jadepeakpoet.ARouter:arouter-api:1.0.1'
+            kapt 'com.github.jadepeakpoet.ARouter:arouter-compiler:1.0.1'
             // MVVM基本库
             implementation 'com.github.wenkency:base-mvvm:1.9.4'
             // implementation 'androidx.activity:activity:1.4.0'

@@ -22,7 +22,7 @@ object RouterHelper {
     fun toLogin(activity: Activity) {
         ARouter.getInstance()
             .build(RouterPath.LOGIN)
-            .withString("userName", LoginProvider.loginProvider?.userName())
+            //.withString("userName", LoginProvider.loginProvider?.userName())
             .navigation(activity)
     }
 

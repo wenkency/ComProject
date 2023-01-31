@@ -2,15 +2,18 @@
 buildscript {
     repositories {
         gradlePluginPortal()
+        google()
+        mavenCentral()
     }
     dependencies {
-        classpath "com.alibaba:arouter-register:1.0.2"
+        // https://github.com/jadepeakpoet/ARouter  解决 AGP 7.3.0 编译问题
+        classpath "com.github.jadepeakpoet.ARouter:arouter-register:1.0.1"
     }
 }
 
 plugins {
-    id 'com.android.application' version '7.1.3' apply false
-    id 'com.android.library' version '7.1.3' apply false
+    id 'com.android.application' version '7.3.1' apply false
+    id 'com.android.library' version '7.3.1' apply false
     id 'org.jetbrains.kotlin.android' version '1.7.10' apply false
 }
 

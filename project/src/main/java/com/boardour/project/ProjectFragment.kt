@@ -38,8 +38,8 @@ class ProjectFragment : BaseFragment() {
             }
         })
         viewPager.adapter = pagerAdapter
-        // 防止销毁，性能差点，但不影响
-        viewPager.offscreenPageLimit = 3
+        // 预加载左右2，最多5个页面
+        viewPager.offscreenPageLimit = 2
         // TAB设置
         tabAdapter = TabAdapter(getAppActivity())
         tabLayout.setAdapter(tabAdapter, viewPager, 0)
@@ -49,7 +49,6 @@ class ProjectFragment : BaseFragment() {
         viewModel.articleData.observe(this) {
             tabAdapter.replaceAll(it)
             pagerAdapter.replaceAll(it)
-
             viewPager.post {
                 pagerAdapter.onPageSelected(0)
             }

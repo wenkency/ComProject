@@ -37,7 +37,9 @@ class PagerAdapter(
         viewModel.articleListData.observe(owner) { item ->
             listMap[item.position] = item
             // 要做一些事
-            setData(holderMap[item.position]!!, item, item.position)
+            holderMap[item.position]?.let {
+                setData(it, item, item.position)
+            }
         }
     }
 
@@ -45,15 +47,15 @@ class PagerAdapter(
         super.destroyItem(container, position, obj)
         // 清空数据
         listMap[position] = null
-        val holder = holderMap[position]!!
-        val recyclerView: RecyclerView = holder.getView(R.id.recycler_view)
-        if (recyclerView.adapter != null) {
+        val holder = holderMap[position]
+        val recyclerView: RecyclerView? = holder?.getView(R.id.recycler_view)
+        if (recyclerView?.adapter != null) {
             val adapter = recyclerView.adapter as XQuickAdapter<ArticleBean>
             adapter.clear()
         }
     }
 
-    fun setData(holder: XQuickViewHolder, item: ArticleListBean, position: Int) {
+    private fun setData(holder: XQuickViewHolder, item: ArticleListBean, position: Int) {
         val recyclerView: RecyclerView = holder.getView(R.id.recycler_view)
         if (recyclerView.adapter == null) {
             recyclerView.layoutManager = LinearLayoutManager(activity)
