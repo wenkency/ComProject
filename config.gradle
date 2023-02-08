@@ -16,7 +16,7 @@ project.ext {
         // ARouter
         apply plugin: 'com.alibaba.arouter'
         apply plugin: 'kotlin-kapt'
-        apply plugin: 'kotlin-android-extensions'
+        apply plugin: 'kotlin-parcelize'
 
 
         project.kapt {

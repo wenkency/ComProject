@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/DefaultTheme"
         android:usesCleartextTraffic="true">
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

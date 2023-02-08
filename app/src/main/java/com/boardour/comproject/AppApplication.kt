@@ -1,11 +1,13 @@
 package com.boardour.comproject
 
 import android.app.Application
+import android.util.Log
 import cn.carhouse.web.WebUtils
 import com.alibaba.android.arouter.launcher.ARouter
 import com.base.BaseConfig
 import com.base.BuildConfig
 import com.boardour.comm.AppDialog
+import com.boardour.comproject.utils.MultidexUtils
 import com.boardour.mmkv.MMKVUtils
 import com.boardour.net.cookie.NetCookieJar
 import com.lven.loading.LoadingManager
@@ -15,6 +17,10 @@ import com.scwang.smart.refresh.header.ClassicsHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import kotlin.concurrent.thread
 
+
+/**
+ * 应用的Application
+ */
 class AppApplication : Application() {
 
 
@@ -31,39 +37,76 @@ class AppApplication : Application() {
         }
     }
 
+    /*override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        val isMainProcess = MultidexUtils.isMainProcess(base)
+        if (isMainProcess && !MultidexUtils.isVMMultidexCapable()) {
+            //MultidexUtils.loadMultiDex(base)
+            //MultiDex.install(base)
+            BoostMultiDex.install(this)
+        }
+    }*/
+
     override fun onCreate() {
         super.onCreate()
+        val isMainProcess = MultidexUtils.isMainProcess(this)
+        if (!isMainProcess) {
+            return
+        }
+        val temp = System.currentTimeMillis()
+        /*AppStartTaskDispatcher.create()
+            .setShowLog(true)
+            .setAllTaskWaitTimeOut(5000)
+            .addAppStartTask(object : AppStartTask() {
+                override fun run() {
+                    init()
+                }
 
-        // 这个是缓存类
+                override fun isRunOnMainThread(): Boolean {
+                    return false
+                }
+
+                override fun needWait(): Boolean {
+                    return true
+                }
+
+            })
+            .start()
+            .await()*/
+        init()
+        Log.e("TAG", "init ${System.currentTimeMillis() - temp}")
+    }
+
+    private fun init() {
+        // MMKV 缓存
         MMKVUtils.init(this)
-
-        //  项目通用Dialog配置
+        // 项目通用Dialog配置
         BaseConfig.dialog = AppDialog()
         // 网络初始化 http://httpbin.org/
         RestConfig.baseUrl("https://www.wanandroid.com/")
             .debugUrl("https://www.wanandroid.com/")
             .register(this)
         RestConfig.cookieJar = NetCookieJar
-
-
         // 加载页面：https://github.com/wenkency/loading
         LoadingManager.BASE_LOADING_LAYOUT_ID = R.layout.loading_pager_loading
         LoadingManager.BASE_RETRY_LAYOUT_ID = R.layout.loading_pager_error
         LoadingManager.BASE_DATA_ERROR_LAYOUT_ID = R.layout.loading_pager_data_error
 
 
+
+
+        // ARouter
+        if (BuildConfig.DEBUG) {
+            ARouter.openLog()     // 打印日志
+            ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
+        }
+        ARouter.init(this) // 尽可能早，推荐在Application中初始化
+
+
         thread {
-            // 3. Web初始化
+            // Web初始化
             WebUtils.getInstance().init(this)
         }
-        thread {
-            if (BuildConfig.DEBUG) {
-                ARouter.openLog()     // 打印日志
-                ARouter.openDebug()   // 开启调试模式(如果在InstantRun模式下运行，必须开启调试模式！线上版本需要关闭,否则有安全风险)
-            }
-            ARouter.init(this) // 尽可能早，推荐在Application中初始化
-        }
     }
-
 
 }

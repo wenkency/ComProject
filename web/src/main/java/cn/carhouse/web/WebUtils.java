@@ -18,7 +18,7 @@ import cn.carhouse.web.utils.WebConfig;
  */
 
 public class WebUtils {
-    private boolean isInit;
+    private volatile boolean isInit;
 
     private WebUtils() {
     }

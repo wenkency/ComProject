@@ -1,6 +1,12 @@
 // 引入配置
 apply from: "${rootDir}/config.gradle"
+android {
+    /*defaultConfig {
+        multiDexEnabled true
+        multiDexKeepProguard file('maindex-keep.pro')
+    }*/
 
+}
 dependencies {
     implementation project(path: ':login')
     implementation project(path: ':register')
@@ -10,5 +16,10 @@ dependencies {
     implementation project(path: ':user')
     implementation project(path: ':web')
     implementation project(path: ':lib-mmkv')
+    // 启动：https://github.com/aiceking/AppStartFaster
+    implementation 'com.github.aiceking:AppStartFaster:2.2.0'
 
+    //implementation 'androidx.multidex:multidex:2.0.1'
+    // 要添加阿里的仓库
+    //implementation 'com.bytedance.boost_multidex:boost_multidex:1.0.1'
 }

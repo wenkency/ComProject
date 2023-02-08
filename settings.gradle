@@ -4,6 +4,13 @@ pluginManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        // 阿里云云效仓库：https://maven.aliyun.com/mvn/guide
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        // 华为开源镜像：https://mirrors.huaweicloud.com/
+        maven { url 'https://repo.huaweicloud.com/repository/maven/' }
     }
 }
 dependencyResolutionManagement {
@@ -12,6 +19,13 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url 'https://jitpack.io' }
+        // 阿里云云效仓库：https://maven.aliyun.com/mvn/guide
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        // 华为开源镜像：https://mirrors.huaweicloud.com/
+        maven { url 'https://repo.huaweicloud.com/repository/maven/' }
     }
 }
 rootProject.name = "ComProject"
