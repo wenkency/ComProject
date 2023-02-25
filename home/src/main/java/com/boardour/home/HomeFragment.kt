@@ -90,6 +90,12 @@ class HomeFragment : BindFragment<HomeViewModel, HomeFragmentBinding>() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        // 移除掉才行
+        UserViewModel.isLogin.removeObservers(this)
+    }
+
     override fun initNet() {
         // 调用下拉刷新
         binding.smartRefresh.autoRefresh()

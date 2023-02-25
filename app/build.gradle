@@ -22,4 +22,7 @@ dependencies {
     //implementation 'androidx.multidex:multidex:2.0.1'
     // 要添加阿里的仓库
     //implementation 'com.bytedance.boost_multidex:boost_multidex:1.0.1'
+
+    // 内存泄漏监控
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 }

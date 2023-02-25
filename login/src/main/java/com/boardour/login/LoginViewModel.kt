@@ -7,7 +7,7 @@ import com.boardour.comm.bean.UserBean
 import com.boardour.comm.ft_login.UserViewModel
 import com.boardour.net.callback.NetCallback
 import com.boardour.net.viewmodel.NetViewModel
-import com.retrofit.RxPresenter
+import com.retrofit.RxClient
 import com.retrofit.core.RestClient
 
 class LoginViewModel : NetViewModel() {
@@ -15,7 +15,7 @@ class LoginViewModel : NetViewModel() {
      * 登录
      */
     fun login(activity: Activity, name: String, password: String) {
-        RxPresenter.postForm(
+        RxClient.postForm(
             this,
             "/user/login",
             LoginData(name, password),

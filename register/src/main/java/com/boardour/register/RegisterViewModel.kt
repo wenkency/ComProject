@@ -8,7 +8,7 @@ import com.boardour.comm.ft_login.UserViewModel
 import com.boardour.net.callback.DialogCallback
 import com.boardour.net.callback.NetDialogCallback
 import com.boardour.net.viewmodel.NetViewModel
-import com.retrofit.RetrofitPresenter
+import com.retrofit.ApiClient
 import com.retrofit.core.RestClient
 
 /**
@@ -31,7 +31,7 @@ class RegisterViewModel : NetViewModel() {
      */
     fun requestData(activity: Activity,name: String, pass: String) {
         // 模拟注册
-        RetrofitPresenter.postForm(
+        ApiClient.postForm(
             this,
             "/user/register",
             RegisterData(name, pass, pass),

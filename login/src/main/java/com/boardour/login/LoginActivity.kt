@@ -49,6 +49,11 @@ class LoginActivity : AppActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        UserViewModel.isLogin.removeObservers(this)
+    }
+
     override fun initViews() {
         etName = findViewById(R.id.et_name)
         etPass = findViewById(R.id.et_pass)
@@ -58,12 +63,12 @@ class LoginActivity : AppActivity() {
     fun login(view: View) {
         val name = etName.editText
         val pass = etPass.editText
-        if (name.isNullOrEmpty()){
-            Toast.makeText(this,etName.editContent.hint,Toast.LENGTH_SHORT).show()
+        if (name.isNullOrEmpty()) {
+            Toast.makeText(this, etName.editContent.hint, Toast.LENGTH_SHORT).show()
             return
         }
-        if (pass.isNullOrEmpty()){
-            Toast.makeText(this,etPass.editContent.hint,Toast.LENGTH_SHORT).show()
+        if (pass.isNullOrEmpty()) {
+            Toast.makeText(this, etPass.editContent.hint, Toast.LENGTH_SHORT).show()
             return
         }
         viewModel.login(this, name, pass)

@@ -87,4 +87,9 @@ class UserFragment : BaseFragment() {
             RouterHelper.toLogin(getAppActivity())
         }
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        UserViewModel.user.removeObservers(this)
+    }
 }

@@ -5,6 +5,7 @@ import androidx.viewpager.widget.ViewPager.SimpleOnPageChangeListener
 import cn.carhouse.views.tab.XTabLayout
 import com.base.BaseFragment
 import com.base.utils.ViewModelUtils
+import com.boardour.comm.ft_login.UserViewModel
 import com.boardour.project.adapter.PagerAdapter
 import com.boardour.project.adapter.TabAdapter
 import com.boardout.project.R
@@ -62,5 +63,10 @@ class ProjectFragment : BaseFragment() {
     override fun initNet() {
         showDialog()
         viewModel.requestProject()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        UserViewModel.isLogin.removeObservers(this)
     }
 }

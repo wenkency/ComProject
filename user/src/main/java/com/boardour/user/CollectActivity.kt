@@ -15,7 +15,7 @@ import com.boardour.net.callback.NetCallback
 import com.boardour.user.bean.ArticleBean
 import com.boardour.user.bean.ArticleListBean
 import com.boardout.user.R
-import com.retrofit.RxPresenter
+import com.retrofit.RxClient
 import com.retrofit.core.RestClient
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.scwang.smart.refresh.layout.api.RefreshLayout
@@ -101,7 +101,7 @@ class CollectActivity : AppActivity() {
     fun requestCollect() {
         // 收藏接口测试-- cookie
         val url = "/lg/collect/list/$curPage/json"
-        RxPresenter.get(this, url,
+        RxClient.get(this, url,
             object : NetCallback<ArticleListBean>() {
                 override fun onSucceed(data: ArticleListBean, client: RestClient) {
                     if (curPage == 0) {

@@ -18,6 +18,7 @@ object UserViewModel {
         user.value = MMKVUtils.getObject(userKey, UserBean::class.java)
     }
 
+
     /**
      * 缓存用户信息
      */
