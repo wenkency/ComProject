@@ -7,6 +7,7 @@ import cn.carhouse.titlebar.DefTitleBar
 import cn.carhouse.titlebar.utils.TitleBarUtil
 import cn.carhouse.views.tab.XTabLayout
 import com.base.AppActivity
+import com.base.utils.FragmentUtils
 import com.boardour.home.HomeFragment
 import com.boardour.navi.NaviFragment
 import com.boardour.project.ProjectFragment
@@ -34,6 +35,7 @@ class MainActivity : AppActivity() {
 
     // 初始化数据
     override fun initData() {
+        fragments.clear()
         // 设置透明
         TitleBarUtil.statusBarTrans(this)
         // 底部Tab数据
@@ -54,6 +56,7 @@ class MainActivity : AppActivity() {
         val tabLayout = findViewById<XTabLayout>(R.id.tab_layout)
         val viewPager = findViewById<ViewPager>(R.id.view_pager)
         val pagerAdapter = XFragmentPagerAdapter(supportFragmentManager, fragments)
+        viewPager.offscreenPageLimit=3
         viewPager.adapter = pagerAdapter
         // 底部TAB
         val tabAdapter = MainTabAdapter(this, tabData, R.layout.item_tab_layout)
@@ -79,5 +82,11 @@ class MainActivity : AppActivity() {
     // 退出没有动画
     override fun isFinishActivityAnim(): Boolean {
         return false
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        fragments.clear()
+        FragmentUtils.removeAllFragments(supportFragmentManager)
     }
 }

@@ -6,6 +6,7 @@ import cn.carhouse.adapter.XQuickViewHolder
 import cn.carhouse.views.adapter.XCommAdapter
 import cn.carhouse.views.adapter.XViewHolder
 import com.base.BindFragment
+import com.base.utils.FragmentUtils
 import com.boardour.comm.RouterHelper
 import com.boardour.navi.bean.ArticleBean
 import com.boardour.navi.bean.NaviBean
@@ -102,5 +103,10 @@ class NaviFragment : BindFragment<NaviViewModel, NaviFragmentBinding>() {
 
     override fun initNet() {
         viewModel.requestNavi(dialogState)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        FragmentUtils.removeFragment(parentFragmentManager,this)
     }
 }

@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import cn.carhouse.views.XTextLayout
 import com.base.BaseFragment
+import com.base.utils.FragmentUtils
 import com.base.utils.ViewModelUtils
 import com.boardour.comm.RouterHelper
 import com.boardour.comm.ft_login.UserViewModel
@@ -91,5 +92,7 @@ class UserFragment : BaseFragment() {
     override fun onDestroy() {
         super.onDestroy()
         UserViewModel.user.removeObservers(this)
+        UserViewModel.isLogin.removeObservers(this)
+        FragmentUtils.removeFragment(parentFragmentManager,this)
     }
 }

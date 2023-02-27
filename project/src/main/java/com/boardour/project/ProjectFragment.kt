@@ -4,6 +4,7 @@ import androidx.viewpager.widget.ViewPager
 import androidx.viewpager.widget.ViewPager.SimpleOnPageChangeListener
 import cn.carhouse.views.tab.XTabLayout
 import com.base.BaseFragment
+import com.base.utils.FragmentUtils
 import com.base.utils.ViewModelUtils
 import com.boardour.comm.ft_login.UserViewModel
 import com.boardour.project.adapter.PagerAdapter
@@ -68,5 +69,6 @@ class ProjectFragment : BaseFragment() {
     override fun onDestroy() {
         super.onDestroy()
         UserViewModel.isLogin.removeObservers(this)
+        FragmentUtils.removeFragment(parentFragmentManager,this)
     }
 }

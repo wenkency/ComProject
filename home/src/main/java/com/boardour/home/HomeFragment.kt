@@ -2,6 +2,7 @@ package com.boardour.home
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.base.BindFragment
+import com.base.utils.FragmentUtils
 import com.boardour.comm.bean.IViewType
 import com.boardour.comm.ft_login.UserViewModel
 import com.boardour.home.bean.BannerBean
@@ -94,6 +95,7 @@ class HomeFragment : BindFragment<HomeViewModel, HomeFragmentBinding>() {
         super.onDestroy()
         // 移除掉才行
         UserViewModel.isLogin.removeObservers(this)
+        FragmentUtils.removeFragment(parentFragmentManager,this)
     }
 
     override fun initNet() {

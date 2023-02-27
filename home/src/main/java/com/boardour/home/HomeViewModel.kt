@@ -24,7 +24,7 @@ class HomeViewModel : NetViewModel() {
      */
     fun requestBanner(pageState: PageStateViewModel) {
         // Banner数据
-        HomeRepository.banner(object : PageCallback<List<BannerItem>>(pageState) {
+        HomeRepository.banner(this, object : PageCallback<List<BannerItem>>(pageState) {
             override fun onLoadSucceed(data: List<BannerItem>) {
                 bannerData.value = data
             }
@@ -37,7 +37,7 @@ class HomeViewModel : NetViewModel() {
 
     fun requestArticleList(pageNum: Int) {
         // 文章列表
-        HomeRepository.articleList(pageNum, object : NetCallback<ArticleListBean>() {
+        HomeRepository.articleList(this, pageNum, object : NetCallback<ArticleListBean>() {
             override fun onSucceed(data: ArticleListBean, client: RestClient) {
                 articleData.value = data
             }
